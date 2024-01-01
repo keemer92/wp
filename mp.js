@@ -149,10 +149,11 @@ const Friday = [sets, growthOrMaintainenanceReps, legs];
 return musclegrowthMacros; 
       
         } 
+        if (goal != 1 || fat > 10) {
+            return;
      const muscleWorkoutResult = getGrowth();
 
-     if (goal != 1 || fat > 10) {
-        return;
+     
     };
      console.log(muscleWorkoutResult);
 
