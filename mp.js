@@ -1,112 +1,195 @@
 const prompt = require("prompt-sync")();
-
 console.log("Time to get your dream body");
 const weight = Number(prompt("How much do you weigh in pounds? "));
-const fat = prompt("What is your body fat percentage? ");
+const fat = Number(prompt("What is your body fat percentage? "));
 const goal = Number(prompt("Type 1 for muscle growth (weight gain). Type 2 for fat loss (shred/toneup). Type 3 for maintenance: "));
-let selectedMuscle; 
-/*I was getting this error "selectedMuscle' is declared but its value is never read.ts(6133)"
-So i defined selectedMuscle in another place until it was used. Before i was using const
-*/
+let selectedMuscle;
 if (goal === 1) 
-        {selectedMuscle = prompt("Choose one of the following muscles to grow over the next 6 weeks: Chest, Back, Shoulders, Triceps, Biceps, Glutes, Hamstrings, Quads: ");}
+        {selectedMuscle = prompt("Choose one of the following muscles to grow over the next 6 weeks: Chest, Back, Shoulders, Triceps, Biceps, Glutes, Hamstrings, Quads, Calves: ");}
 
-function musclegrowth_macrosAndlifting() {
 //From line 15-30 the lifting terminology is being defined
-    const workoutDays = ['Monday', 'Tuesday', 'Thursday', 'Friday'];
-    const sets = '3 per exercise';
-    const growthOrMaintainenanceReps = '5 to 8';
-    const pumpReps1 = '2 x 12 to 15 and 1 x 20';
-    const pumpReps2 = '2 x 20';
-    const exercises = {
-        chestPushday: ['Bench Press', 'Incline Dumbbell Press'],
-        chestFocus: ['Bench Press', 'Incline Dumbbell Press', 'Chest Fly'],
-        backPullday: ['Barbell Rows', 'Lat Pulldown'],
-        backFocus: ['Barbell Rows', 'Lat Pulldown', 'Seated Row'],
-        traps:  ['Barbell Shrugs'],
-        shoulders: [['Shoulder Press', 'Barbell Front Raise'],['Barbell Upright Rows', 'Machine Lateral Raise'],['Barbell Face Pull', 'Reverse Pec Dec']],
-        frontDeltFocus: ['Shoulder Press', 'Barbell Front Raise'],
-        sideDeltFocus: ['Barbell Upright Rows', 'Machine Lateral Raise'],
-        rearDeltFocus: ['Barbell Face Pull', 'Reverse Pec Dec'],
-        biceps: ['Barbell Bicep Curls', 'Dumbbell Bicep Curls', 'Hammer Curls'],
-        legs: ['Squats', 'Stiff Leg Deadlifts', 'Adductor', 'Abductor','Hamstring Curls','Leg Extensions', 'Seated Calf Raises', 'Standing Calf Raises'],
-        triceps: ['JM press', 'Tricep Overhead Extensions'],
-        tricepsFocus: ['JM press', 'Tricep Overhead Extensions']
-    }  
+const sets = '3 sets per exercise';
+const rest = 'rest';
+const growthOrMaintainenanceReps = '5 to 8 reps';
+const pumpReps1 = '2 x 12 to 15 and 1 x 20';
+const chest = ['Bench Press', 'Incline Dumbbell Press', 'Chest Fly'];
+const back=  ['Barbell Rows', 'Lat Pulldown', 'Barbell Shrugs'];
+const shoulders=  ['Shoulder Press', 'Barbell Front Raise','Barbell Upright Rows', 'Machine Lateral Raise','Barbell Face Pull', 'Reverse Pec Dec'];
+const glutes = ['Sumo squats','Abductors', 'Adductors', ];
+const hamstrings = ['Stiff Leg Deadlifts', 'Seated Hamstring Curl', 'Lying Hamstring Curls'];
+const quads = ['Squats', 'Legs extensions'];
+const calves = ['Standing Calf Raises', 'Seated Calf Raises'];
+const biceps = ['Barbell Bicep Curls', 'Machine Curls', 'Reverse Curls', 'Hammer Curls', 'Pronoated Dumbbell Curls'];
+const legs= ['Squats', 'Stiff Leg Deadlifts', 'Adductor', 'Abductor','Hamstring Curls','Leg Extensions', 'Seated Calf Raises', 'Standing Calf Raises'];
+const triceps= ['JM press', 'Incline Overhead Extensions', 'Cable Overhead Extensions', 'Cable Underhand Extensions', 'Cable Push Downs'];
+const pushAndpullday = [chest[0], shoulders[0], triceps[0], back[0], back[1], back[2], shoulders[2], shoulders[4], biceps[0]];
+const chestReplacement = [shoulders[0], triceps[0], back[0], back[1], back[2], shoulders[4], shoulders[2], biceps[0]];
+const backReplacement = [chest.slice(0,1), triceps[0], shoulders[0], shoulders[4], shoulders[2], biceps[0]];
+const shoulderReplacement= [chest[0], chest[1], triceps[0], back[0], back[1], back[2], biceps[0]];
+const tricepsReplacement = [chest[0], chest[1], shoulders[0], back[0], back[1], back[2], shoulders[4], shoulders[2], biceps[0]];
+const bicepsReplacement = [chest[0], chest[1], triceps[0], back[0], back[1], back[2], shoulders[4], shoulders[2]];
+const hamstringsReplacement = [sets, growthOrMaintainenanceReps, 'Squats', 'Adductor', 'Abductor','Leg Extensions', 'Seated Calf Raises', 'Standing Calf Raises'];
+const quadsReplacement = [sets, growthOrMaintainenanceReps, 'Stiff Leg Deadlifts', 'Adductor', 'Abductor','Hamstring Curls','Seated Calf Raises', 'Standing Calf Raises'];
+const glutesReplacement = [sets, growthOrMaintainenanceReps,'Squats', 'Stiff Leg Deadlifts','Hamstring Curls','Leg Extensions', 'Seated Calf Raises', 'Standing Calf Raises'];
+const calvesReplacement= [sets, growthOrMaintainenanceReps, 'Squats', 'Stiff Leg Deadlifts', 'Adductor', 'Abductor','Hamstring Curls','Leg Extensions'];
+const Monday = [sets, growthOrMaintainenanceReps, pushAndpullday];
+const Tuesday = [sets, growthOrMaintainenanceReps, legs];
+const Wednesday = [rest];
+const Friday = [sets, growthOrMaintainenanceReps, legs];
     
-    const pushAndpullday = [exercises.chestPushday[0], exercises.chestPushday[1], exercises.shoulders[0][0], exercises.triceps[0], exercises.backPullday[0], exercises.backPullday[1], exercises.shoulders[2][0], exercises.shoulders[1][0], exercises.biceps[0]];
-    const legDay = [exercises.legs[0], exercises.legs[1], exercises.legs[2], exercises.legs[3], exercises.legs[4], exercises.legs[5], exercises.legs[6], exercises.legs[7]]
-    const chestFocusReplacement = [exercises.shoulders[0][0], exercises.triceps[0], exercises.backPullday[0], exercises.backPullday[1], exercises.shoulders[2][0], exercises.shoulders[1][0], exercises.biceps[0]];
-    const backFocusReplacement = [exercises.chestPushday[0], exercises.chestPushday[1], exercises.shoulders[0][0], exercises.triceps[0], exercises.shoulders[2][0], exercises.shoulders[1][0], exercises.biceps[0]];
-    
-    //lifting for muscle growth set, reps, and macros
-    function chestgrowth() {
+    //lifting for muscle growth weightlifting and macros
+    function getgrowth() {
         if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'chest'){
-            const chestworkout = {
-                Monday: {sets, reps: growthOrMaintainenanceReps, exercises: pushAndpullday},
-                Tuesday: {sets, reps: growthOrMaintainenanceReps, exercises: legDay},
-                Wednesday: 'rest',
-                Thursday: {sets, reps: pumpReps2, exercises: exercises.chestFocus.toString(), sets, reps: growthOrMaintainenanceReps, chestFocusReplacement },
-                Friday: {sets, reps: growthOrMaintainenanceReps, exercises: legDay }
-            };
-            return chestworkout;
-             }
-             
+            const chestWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, chest, sets, growthOrMaintainenanceReps, chestReplacement,
+                Friday,
+            }
+            return chestWorkout;
         }
-         // Call the chestgrowth function and store the returned value
-     const chestWorkoutResult = chestgrowth();
-
-     // Now you can use chestWorkoutResult as needed
-     console.log(chestWorkoutResult);
-
-     }
-
-     return musclegrowth_macrosAndlifting();
-    
-
-
-const calculatedmusclegrowth_macrosAndlifting = musclegrowth_macrosAndlifting();
-
-     // Now you can use chestWorkoutResult as needed
-     console.log(calculatedmusclegrowth_macrosAndlifting);
-    
-
-
-function shred_macrosAndlifting() {
-    if  (goal === 1 && fat >= 25) 
-        {console.log("In this case its healthier to lose weight first and then put on muscle. Start over and type 2 if you would like a fat loss/shredding/tone up program");
-}   else if (goal === 2 && fat <= 25
-    )   {console.log("Time to shred/tone up. ");}
-    else if (goal === 2 && fat >= 25
-    )   {console.log("Time to shred/tone up. ");}
-
-    //liftng for shred/toneup
-    const shredLifting = {
-        Monday:     pushAndpullday,
-                    sets,
-                    growthOrMaintainenanceReps,
-        Tuesday:    legDay,
-                    sets,
-                    growthOrMaintainenanceReps,
-        wednesday: "rest",
-        Thursday:   pushAndpullday,
-                    sets,
-                    pumpReps1,
-        Friday:     legDay,
-                    sets,
-                    pumpReps1,
-    }
-    console.log(shredLifting);
-
-  //formula for creating macronutrients for shred/toneup
-  const shredMacronutrients = {
-    protein: Math.round((weight- ((fat / 100) * weight)) * .9),
-    carbs: Math.round(weight- ((fat / 100) * weight)),
-    fat: Math.round((weight- ((fat / 100) * weight)) * .3),
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'back'){
+            const backWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, back, sets, growthOrMaintainenanceReps, backReplacement,
+                Friday,
+            }
+            return backWorkout;
+        };
+                 
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'shoulders'){
+            const shoulderWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, shoulders, sets, growthOrMaintainenanceReps, shoulderReplacement,
+                Friday,
+            }
+            return shoulderWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'triceps'){
+            const tricepsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, triceps, sets, growthOrMaintainenanceReps, tricepsReplacement,
+                Friday,
+            }
+            return tricepsWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'biceps'){
+            const bicepsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, biceps, sets, growthOrMaintainenanceReps, bicepsReplacement,
+                Friday,
+            }
+            return bicepsWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'glutes'){
+            const glutesWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, glutes, sets, growthOrMaintainenanceReps, glutesReplacement,
+            }
+            return glutesWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'hamstrings'){
+            const hamstringsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, hamstrings, sets, growthOrMaintainenanceReps, hamstringsReplacement,
+            }
+            return hamstringsWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'quads'){
+            const quadsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, quads, growthOrMaintainenanceReps, quadsReplacement,
+            }
+            return quadsWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'quads'){
+            const quadsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, quads, growthOrMaintainenanceReps, quadsReplacement,
+            }
+            return quadsWorkout;
+        };
+        if (goal === 1 && fat <= 25 && selectedMuscle.toLowerCase() === 'calves'){
+            const calvesWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, calves, growthOrMaintainenanceReps, calvesReplacement,
+            }
+            return calvesWorkout;
+        };
+        const musclegrowthMacros = {
+            protein: Math.round((weight - ((fat / 100) * weight)) * 0.9),
+            carbs: [
+                    'non training day carbs @ 1/2 of body weight',
+                    'light training day of 0 to 10 sets start carbs @ 1 x body weight',
+                    'moderate training day of 10 to 25 sets start carbs @ 1.5 x body weight',
+                    'heavy training day of 10 to 25 sets start carbs @ 1.5 x body weight'
+                    ],
+            fat: Math.round((weight - ((fat / 100) * weight)) * 0.3),
 };
-return shredMacronutrients; // Return the calculated macronutrients
-}
+console.log(musclegrowthMacros);                     
+return musclegrowthMacros; 
+        
+    } 
+    
+         // Call the chestgrowth function and store the returned value
+     const muscleWorkoutResult = getgrowth();
 
-const calculatedshredMacronutrients = shred_macrosAndlifting();
-console.log(calculatedshredMacronutrients);
+     // Now you can use chestWorkoutResult as needed
+     console.log(muscleWorkoutResult);
+     function shred_macrosAndlifting() {
+        if  (goal === 1 && fat >= 25) 
+            {console.log("In this case its healthier to lose weight first and then put on muscle. Start here");}
+        if (goal === 2 && fat <= 25
+        )   {console.log("Time to shred/tone up. ");}
+        else if (goal === 2 && fat >= 25
+        )   {console.log("Time to shred/tone up. ");}
+    
+        //liftng for shred/toneup
+        const shredLifting = {
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday: { sets: sets, reps: pumpReps1, exercises: pushAndpullday },
+            Friday: { sets: sets, reps: pumpReps1, exercises: legs }
+        };
+    
+      //formula for creating macronutrients for shred/toneup
+      const shredMacros = {
+        protein: Math.round((weight- ((fat / 100) * weight)) * .9),
+        carbs: Math.round(weight- ((fat / 100) * weight)),
+        fat: Math.round((weight- ((fat / 100) * weight)) * .3),
+    };
+    return { shredLifting, shredMacros };
+    
+    }
+    
+    
+    const calculatedshredMacronutrients = shred_macrosAndlifting();
+    console.log(calculatedshredMacronutrients);
+    
+
 
