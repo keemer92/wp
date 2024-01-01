@@ -151,10 +151,9 @@ return musclegrowthMacros;
         } 
         if (goal != 1 || fat > 10) {
             return;
+        };
      const muscleWorkoutResult = getGrowth();
 
-     
-    };
      console.log(muscleWorkoutResult);
 
      function shred_macrosAndlifting() {
