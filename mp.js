@@ -40,98 +40,99 @@ const Friday = [sets, growthOrMaintainenanceReps, legs];
     //lifting for muscle growth weightlifting and macros
     function getGrowth() {
         if (goal != 1 || fat > 10) {
+            return;
+        };
         
-                if (selectedMuscle.toLowerCase() === 'chest'){
-                    const chestWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: pumpReps1, chest, sets, growthOrMaintainenanceReps, chestReplacement,
-                        Friday,
-                    }
-                    return chestWorkout;
-                }
-                if (selectedMuscle.toLowerCase() === 'back'){
-                    const backWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: pumpReps1, back, sets, growthOrMaintainenanceReps, backReplacement,
-                        Friday,
-                    }
-                    return backWorkout;
-                };
+        if (selectedMuscle.toLowerCase() === 'chest'){
+            const chestWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, chest, sets, growthOrMaintainenanceReps, chestReplacement,
+                Friday,
+            }
+            return chestWorkout;
+        }
+        if (selectedMuscle.toLowerCase() === 'back'){
+            const backWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, back, sets, growthOrMaintainenanceReps, backReplacement,
+                Friday,
+            }
+            return backWorkout;
+        };
                         
-                if (selectedMuscle.toLowerCase() === 'shoulders'){
-                    const shoulderWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: pumpReps1, shoulders, sets, growthOrMaintainenanceReps, shoulderReplacement,
-                        Friday,
-                    }
-                    return shoulderWorkout;
-                };
-                if (selectedMuscle.toLowerCase() === 'triceps'){
-                    const tricepsWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: pumpReps1, triceps, sets, growthOrMaintainenanceReps, tricepsReplacement,
-                        Friday,
-                    }
-                    return tricepsWorkout;
-                };
-                if (selectedMuscle.toLowerCase() === 'biceps'){
-                    const bicepsWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: pumpReps1, biceps, sets, growthOrMaintainenanceReps, bicepsReplacement,
-                        Friday,
-                    }
-                    return bicepsWorkout;
-                };
-                if (selectedMuscle.toLowerCase() === 'glutes'){
-                    const glutesWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
-                        Friday: pumpReps1, glutes, sets, growthOrMaintainenanceReps, glutesReplacement,
-                    }
-                    return glutesWorkout;
-                };
-                if (selectedMuscle.toLowerCase() === 'hamstrings'){
-                    const hamstringsWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
-                        Friday: pumpReps1, hamstrings, sets, growthOrMaintainenanceReps, hamstringsReplacement,
-                    }
-                    return hamstringsWorkout;
-                };
-                
-                if (selectedMuscle.toLowerCase() === 'quads'){
-                    const quadsWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
-                        Friday: pumpReps1, quads, growthOrMaintainenanceReps, quadsReplacement,
-                    }
-                    return quadsWorkout;
-                };
-                if (selectedMuscle.toLowerCase() === 'calves'){
-                    const calvesWorkout = {
-                        Monday,
-                        Tuesday,
-                        Wednesday,
-                        Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
-                        Friday: pumpReps1, calves, growthOrMaintainenanceReps, calvesReplacement,
-                    }
-                    return calvesWorkout;
+        if (selectedMuscle.toLowerCase() === 'shoulders'){
+            const shoulderWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, shoulders, sets, growthOrMaintainenanceReps, shoulderReplacement,
+                Friday,
+            }
+            return shoulderWorkout;
+        };
+        if (selectedMuscle.toLowerCase() === 'triceps'){
+            const tricepsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, triceps, sets, growthOrMaintainenanceReps, tricepsReplacement,
+                Friday,
+            }
+            return tricepsWorkout;
+        };
+        if (selectedMuscle.toLowerCase() === 'biceps'){
+            const bicepsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: pumpReps1, biceps, sets, growthOrMaintainenanceReps, bicepsReplacement,
+                Friday,
+            }
+            return bicepsWorkout;
+        };
+        if (selectedMuscle.toLowerCase() === 'glutes'){
+            const glutesWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, glutes, sets, growthOrMaintainenanceReps, glutesReplacement,
+            }
+            return glutesWorkout;
+        };
+        if (selectedMuscle.toLowerCase() === 'hamstrings'){
+            const hamstringsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, hamstrings, sets, growthOrMaintainenanceReps, hamstringsReplacement,
+            }
+            return hamstringsWorkout;
+        };      
+        if (selectedMuscle.toLowerCase() === 'quads'){
+            const quadsWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, quads, growthOrMaintainenanceReps, quadsReplacement,
+            }
+            return quadsWorkout;
+        };
+        if (selectedMuscle.toLowerCase() === 'calves'){
+            const calvesWorkout = {
+                Monday,
+                Tuesday,
+                Wednesday,
+                Thursday: sets, growthOrMaintainenanceReps, pushAndpullday,
+                Friday: pumpReps1, calves, growthOrMaintainenanceReps, calvesReplacement,
+            }
+        return calvesWorkout;
                 };
                 const musclegrowthMacros = {
                     protein: Math.round((weight - ((fat / 100) * weight)) * 0.9),
@@ -145,7 +146,7 @@ const Friday = [sets, growthOrMaintainenanceReps, legs];
                 };
 
                 console.log(musclegrowthMacros);
-            };
+            
         
                      
 return musclegrowthMacros; 
