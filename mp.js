@@ -38,6 +38,7 @@ const Wednesday = [rest];
 const Friday = [sets, growthOrMaintainenanceReps, legs];
     
     //lifting for muscle growth weightlifting and macros
+    if (goal != 1 || fat > 10) {
     function getGrowth() {
         
         if (selectedMuscle.toLowerCase() === 'chest'){
@@ -147,8 +148,8 @@ const Friday = [sets, growthOrMaintainenanceReps, legs];
         
                      
 return musclegrowthMacros; 
-
-
+            };
+        };
      function shred_macrosAndlifting() {
        
         //liftng for shred/toneup
@@ -177,15 +178,16 @@ else if (goal === 2 && fat >= 25
 )   {console.log("Time to shred/tone up. ");}
 
       
-} 
+
 if (goal != 1 || fat > 10) {
     return;
+    const calculatedshredMacronutrients = shred_macrosAndlifting();
 };
 const muscleWorkoutResult = getGrowth();
 
 console.log(muscleWorkoutResult);
 
-    const calculatedshredMacronutrients = shred_macrosAndlifting();
+    
     console.log(calculatedshredMacronutrients);
     
 
