@@ -182,9 +182,9 @@ else if (goal === 2 && fat >= 25
 if (goal != 1 || fat > 10) {
     return;
     const calculatedshredMacronutrients = shred_macrosAndlifting();
-};
+}; else {
 const muscleWorkoutResult = getGrowth();
-
+}
 console.log(muscleWorkoutResult);
 
     
