@@ -147,14 +147,7 @@ const Friday = [sets, growthOrMaintainenanceReps, legs];
         
                      
 return musclegrowthMacros; 
-      
-        } 
-        if (goal != 1 || fat > 10) {
-            return;
-        };
-     const muscleWorkoutResult = getGrowth();
 
-     console.log(muscleWorkoutResult);
 
      function shred_macrosAndlifting() {
        
@@ -182,6 +175,15 @@ if (goal === 2 && fat <= 25
 )   {console.log("Time to shred/tone up. ");}
 else if (goal === 2 && fat >= 25
 )   {console.log("Time to shred/tone up. ");}
+
+      
+} 
+if (goal != 1 || fat > 10) {
+    return;
+};
+const muscleWorkoutResult = getGrowth();
+
+console.log(muscleWorkoutResult);
 
     const calculatedshredMacronutrients = shred_macrosAndlifting();
     console.log(calculatedshredMacronutrients);
