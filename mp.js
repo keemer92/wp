@@ -177,14 +177,14 @@ if (goal === 2 && fat <= 25
 else if (goal === 2 && fat >= 25
 )   {console.log("Time to shred/tone up. ");}
 
-      
+  var result;    
 
 if (goal != 1 || fat > 10) {
     
     const calculatedshredMacronutrients = shred_macrosAndlifting();
-}; else {
+} else {
 const muscleWorkoutResult = getGrowth();
-};
+}
 console.log(muscleWorkoutResult);
 
     
