@@ -38,7 +38,7 @@ const Wednesday = [rest];
 const Friday = [sets, growthOrMaintainenanceReps, legs];
     
     //lifting for muscle growth weightlifting and macros
-    if (goal != 1 || fat > 10) {
+    if (goal === 1 && fat <= 25) {
     function getGrowth() {
         
         if (selectedMuscle.toLowerCase() === 'chest'){
