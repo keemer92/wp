@@ -185,9 +185,6 @@ if (goal != 1 || fat > 10) {
 } else {
     result = getGrowth();
 }
-console.log(muscleWorkoutResult);
-
-    
-    console.log(calculatedshredMacronutrients);
+console.log(result);
     
 
