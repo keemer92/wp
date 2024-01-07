@@ -9,7 +9,6 @@ if (goal === 1)
 
 //From line 10-43 is liftting terminology
 const sets = '3 sets per exercise';
-const rest = 'rest';
 const growthOrMaintainenanceReps = '5 to 8 reps';
 const pumpReps1 = '2 x 12 to 15 and 1 x 20';
 const chest = ['Bench Press', 'Incline Dumbbell Press', 'Chest Fly'];
@@ -47,7 +46,7 @@ const heavyTrainingDayCarbs = weight * 2;
 function muscleGrowthLifting() {
     switch(selectedMuscle) {
         case "chest":
-        console.log(Monday,Tuesday,Wednesday,Thursday, pumpReps1, chest, sets, growthOrMaintainenanceReps, chestReplacement, Friday)
+        console.log(Monday.toString(),Tuesday.toString,Wednesday.toString(),Thursday.toString(), pumpReps1, chest.toString(), sets, growthOrMaintainenanceReps, chestReplacement.toString(), Friday.toString())
         break;
 
         case "back":
