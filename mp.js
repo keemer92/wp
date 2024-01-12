@@ -33,6 +33,8 @@ const glutesReplacement = [sets, growthOrMaintainenanceReps,'Squats', 'Stiff Leg
 const calvesReplacement= [sets, growthOrMaintainenanceReps, 'Squats', 'Stiff Leg Deadlifts', 'Adductor', 'Abductor','Hamstring Curls','Leg Extensions'];
 const Monday = [sets, growthOrMaintainenanceReps, pushAndpullday];
 const Tuesday = [sets, growthOrMaintainenanceReps, legs];
+const upperBodyShred = [pumpReps1, pushAndpullday];
+const legsShred = [pumpReps1, legs];
 const Wednesday = 'rest';
 const Friday = [sets, growthOrMaintainenanceReps, legs];
 const Thursday = 'Thursday';
@@ -40,13 +42,12 @@ const nonTrainingDayCarbs = weight * .5;
 const lightTrainingDayCarbs = weight * 1;
 const moderateTrainingDayCarbs = weight * 1.5;
 const heavyTrainingDayCarbs = weight * 2;
-
     
-    //lifting for muscle growth weightlifting and macros
+    //Function for weightlifiting program encompassing a switch statement
 function muscleGrowthLifting() {
     switch(selectedMuscle) {
         case "chest":
-        console.log(Monday.toString(),Tuesday.toString,Wednesday.toString(),Thursday.toString(), pumpReps1, chest.toString(), sets, growthOrMaintainenanceReps, chestReplacement.toString(), Friday.toString())
+        console.log(Monday, Tuesday, Wednesday, Thursday , pumpReps1, chest , sets, growthOrMaintainenanceReps, chestReplacement , Friday);
         break;
 
         case "back":
@@ -85,6 +86,7 @@ function muscleGrowthLifting() {
     const muscleGrowthLiftingresults = muscleGrowthLifting();
     console.log(muscleGrowthLiftingresults);
 
+    //function for muscle growth macronutrients
     function muscleGrowthMacros () {
         if (goal === 1 && fatPercentage < 25) { 
             const carbsproteinsAndfatsformuscle = {
@@ -94,51 +96,45 @@ function muscleGrowthLifting() {
                 '0 to 10 sets for the day': lightTrainingDayCarbs,
                 '10 to 25 sets for the day': moderateTrainingDayCarbs,
                 '25 plus sets for the day': heavyTrainingDayCarbs,
-            'Grams of Fat Per Day': Math.round((weight - ((fatPercentage / 100) * weight)) * 0.3),
+            'Grams of Fat Per Day': Math.round((weight - ((fatPercentage / 100) * weight)) * 0.5),
             }
-
         console.log(carbsproteinsAndfatsformuscle);
-        }
-           
+        }  
     };
 
     const muscleGrowthMacrosresults = muscleGrowthMacros();
     console.log(muscleGrowthMacrosresults);
      
-     function shred_macrosAndlifting() {
-       
-        
-        const shredLifting = {
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday: { sets: sets, reps: pumpReps1, exercises: pushAndpullday },
-            Friday: { sets: sets, reps: pumpReps1, exercises: legs }
+    //function for shred/fat loss weight lifting
+    function shredLifting() {
+        shredLiftingDays = {
+            monday: Monday,
+            tuesday: Tuesday,
+            wendesday: Wednesday,
+            thursday: upperBodyShred,
+            friday: legsShred,
+        }
+        console.log(shredLiftingDays);
+    }
+    const shredLiftingResults = shredLifting();
+    console.log(shredLiftingResults);
+
+    //function for shred/fat loss macronutrients
+    function shredMacros() {
+            carbsproteinsAndfatsforFatloss = {
+                protein: Math.round((weight- ((fatPercentage / 100) * weight)) * .9),
+                carbs: Math.round(weight- ((fatPercentage / 100) * weight)),
+                fat: Math.round((weight- ((fatPercentage / 100) * weight)) * .3),
+            }
+            console.log(carbsproteinsAndfatsforFatloss);
+        }
+        if (goal === 1 && fatPercentage > 25) {
+            console.log("It's healthier to lose fat first")
+        } else if (goal === 2 && fatPercentage > 25) {
+            console.log("It's time to shred/losefat")
+        } else if (goal === 2 && fatPercentage < 25) {
+        const shredMacrosResults = shredMacros();
         };
-    
-      //formula for creating macronutrients for shred/toneup
-      const shredMacros = {
-        protein: Math.round((weight- ((fatPercentage / 100) * weight)) * .9),
-        carbs: Math.round(weight- ((fatPercentage / 100) * weight)),
-        fat: Math.round((weight- ((fatPercentage / 100) * weight)) * .3),
-    };
-    return { shredLifting, shredMacros };
-}
-        
-if  (goal === 1 && fatPercentage >= 25) 
-{console.log("In this case its healthier to lose weight first and then put on muscle. Start here");}
-if (goal === 2 && fatPercentage <= 25
-)   {console.log("Time to shred/tone up. ");}
-else if (goal === 2 && fatPercentage >= 25
-)   {console.log("Time to shred/tone up. ");}
 
-  var result;    
-
-if (goal != 1 || fatPercentage > 10) {
-    result = shred_macrosAndlifting();
-} else if (goal ===1 && fatPercentage < 25){
-    result = getGrowth();
-} 
-console.log(result);
-    
+    console.log(shredMacrosResults)
 
